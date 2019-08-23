@@ -1,21 +1,23 @@
 package com.swan.dao.jdbc;
 
 
-import java.io.PrintWriter;
+import com.swan.string.StringUtils;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.SQLFeatureNotSupportedException;
-import java.util.logging.Logger;
-import javax.sql.DataSource;
 import org.springframework.beans.factory.InitializingBean;
 
-public class SingleDataSource implements DataSource,InitializingBean {
+public class SingleDataSource extends AbstractDataSource implements InitializingBean {
 
     private String jdbcRef;
     private int maxActiveSize;
     private int minActiveSize;
     private int coreActiveSize;
     private String dataSourceType;
+
+    @Override
+    public void init() {
+
+    }
 
     @Override
     public Connection getConnection() throws SQLException {
@@ -28,42 +30,15 @@ public class SingleDataSource implements DataSource,InitializingBean {
     }
 
     @Override
-    public <T> T unwrap(Class<T> iface) throws SQLException {
-        return null;
-    }
-
-    @Override
-    public boolean isWrapperFor(Class<?> iface) throws SQLException {
-        return false;
-    }
-
-    @Override
-    public PrintWriter getLogWriter() throws SQLException {
-        return null;
-    }
-
-    @Override
-    public void setLogWriter(PrintWriter out) throws SQLException {
-
-    }
-
-    @Override
-    public void setLoginTimeout(int seconds) throws SQLException {
-
-    }
-
-    @Override
-    public int getLoginTimeout() throws SQLException {
-        return 0;
-    }
-
-    @Override
-    public Logger getParentLogger() throws SQLFeatureNotSupportedException {
-        return null;
-    }
-
-    @Override
     public void afterPropertiesSet() throws Exception {
+        if (StringUtils.isEmpty(jdbcRef)) {
+            throw new IllegalArgumentException("datasource jdbcRef is empty");
+        }
 
+        if (StringUtils.isEmpty(dataSourceType)) {
+            throw new IllegalArgumentException("datasource type is empty");
+        }
+
+        init();
     }
 }

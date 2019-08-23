@@ -21,6 +21,11 @@
       <artifactId>spring-core</artifactId>
       <version>5.1.6.RELEASE</version>
     </dependency>
+    <dependency>
+      <groupId>com.jason.swan</groupId>
+      <artifactId>swan-common</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
   </dependencies>
 
 

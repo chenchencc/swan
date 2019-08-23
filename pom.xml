@@ -15,6 +15,7 @@
     <module>swan-admin</module>
     <module>swan-tx</module>
     <module>swan-plugin</module>
+    <module>swan-common</module>
   </modules>
 
   <properties>
