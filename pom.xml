@@ -16,6 +16,7 @@
     <module>swan-tx</module>
     <module>swan-plugin</module>
     <module>swan-common</module>
+    <module>swan-monitor</module>
   </modules>
 
   <properties>
