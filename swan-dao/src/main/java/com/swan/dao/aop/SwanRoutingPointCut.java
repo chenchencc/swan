@@ -15,7 +15,7 @@ public class SwanRoutingPointCut implements Pointcut,MethodMatcher,ClassFilter {
 
     @Override
     public boolean matches(Method method, Class<?> aClass) {
-        return false;
+        return matches(method,aClass);
     }
 
     @Override
